@@ -1,0 +1,17 @@
+services:
+
+  backend:
+    build:
+      context: ./backend
+    container_name: server-log-analyzer-backend
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: server-log-analyzer-frontend
+    ports:
+      - "8081:80"
+    depends_on:
+      - backend

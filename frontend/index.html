@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Server Log Analyzer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div>
+            <h1>🛡️ Server Log Analyzer</h1>
+            <p>DevOps & Cybersecurity Monitoring Dashboard</p>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            System Ready
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- Log Input -->
+
+        <section class="panel">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Access Log Analysis</h2>
+                    <p>Paste Apache/Nginx server access logs below.</p>
+                </div>
+
+                <button id="sampleBtn" class="secondary-btn">
+                    Load Sample Logs
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="logInput"
+                placeholder="Paste your Apache/Nginx access logs here..."
+            ></textarea>
+
+
+            <button id="analyzeBtn" class="primary-btn">
+                🔍 Analyze Logs
+            </button>
+
+
+            <div id="message" class="message"></div>
+
+        </section>
+
+
+        <!-- Dashboard Cards -->
+
+        <section class="dashboard-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📊
+                </div>
+
+                <div>
+                    <p>Total Requests</p>
+                    <h3 id="totalRequests">0</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card success">
+
+                <div class="stat-icon">
+                    ✓
+                </div>
+
+                <div>
+                    <p>Successful</p>
+                    <h3 id="successfulRequests">0</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card warning">
+
+                <div class="stat-icon">
+                    ⚠
+                </div>
+
+                <div>
+                    <p>Client Errors</p>
+                    <h3 id="clientErrors">0</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card danger">
+
+                <div class="stat-icon">
+                    !
+                </div>
+
+                <div>
+                    <p>Server Errors</p>
+                    <h3 id="serverErrors">0</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card security">
+
+                <div class="stat-icon">
+                    🛡
+                </div>
+
+                <div>
+                    <p>Security Findings</p>
+                    <h3 id="securityFindings">0</h3>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Results -->
+
+        <section class="results-grid">
+
+
+            <!-- HTTP Status Codes -->
+
+            <div class="panel result-panel">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>HTTP Status Codes</h2>
+                        <p>Request response distribution</p>
+                    </div>
+
+                </div>
+
+
+                <div id="statusCodes" class="status-list">
+
+                    <p class="empty-state">
+                        No analysis performed yet.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Suspicious Paths -->
+
+            <div class="panel result-panel">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>🚨 Suspicious Paths</h2>
+                        <p>Potentially malicious requests</p>
+                    </div>
+
+                </div>
+
+
+                <div id="suspiciousPaths" class="finding-list">
+
+                    <p class="empty-state">
+                        No suspicious paths detected.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Unauthorized Requests -->
+
+            <div class="panel result-panel">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>🔐 Unauthorized Requests</h2>
+                        <p>Repeated HTTP 401 responses</p>
+                    </div>
+
+                </div>
+
+
+                <div id="unauthorizedRequests" class="finding-list">
+
+                    <p class="empty-state">
+                        No repeated unauthorized requests detected.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- Security Information -->
+
+        <section class="panel information-panel">
+
+            <h2>Security Monitoring</h2>
+
+
+            <div class="security-info">
+
+
+                <div>
+
+                    <strong>
+                        Suspicious Path Detection
+                    </strong>
+
+                    <p>
+                        Detects common attack-related paths such as
+                        admin panels, configuration files, login endpoints,
+                        and directory traversal attempts.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        401 Monitoring
+                    </strong>
+
+                    <p>
+                        Identifies clients generating repeated unauthorized
+                        requests that may indicate brute-force activity.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Server Error Monitoring
+                    </strong>
+
+                    <p>
+                        Tracks HTTP 5xx responses that may indicate
+                        application or infrastructure problems.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            Server Log Analyzer • DevOps & Cybersecurity Project
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
